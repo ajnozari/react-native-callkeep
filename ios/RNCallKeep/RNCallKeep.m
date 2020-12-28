@@ -183,7 +183,7 @@ RCT_EXPORT_METHOD(displayIncomingCall:(NSString *)uuidString
                       supportsHolding:(BOOL)supportsHolding
                          supportsDTMF:(BOOL)supportsDTMF
                      supportsGrouping:(BOOL)supportsGrouping
-                   supportsUngrouping:(BOOL)supportsUngrouping)            
+                   supportsUngrouping:(BOOL)supportsUngrouping)
 {
     [RNCallKeep reportNewIncomingCall: uuidString
                                handle: handle
@@ -382,10 +382,10 @@ RCT_EXPORT_METHOD(isCallActive:(NSString *)uuidString)
     for(CXCall *call in callObserver.calls){
         NSLog(@"[RNCallKeep] isCallActive %@ %d ?", call.UUID, [call.UUID isEqual:uuid]);
         if([call.UUID isEqual:[[NSUUID alloc] initWithUUIDString:uuidString]] && !call.hasConnected){
-            return true;
+            return @true;
         }
     }
-    return false;
+    return @false;
 }
 
 + (void)endCallWithUUID:(NSString *)uuidString
